@@ -8,7 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RnSchool.DataProviders.DB;
 using RnSchool.Db.Models;
+using RnSchool.Services;
 /*using RnSchool.Models;*/
 using System;
 using System.Collections.Generic;
@@ -40,13 +42,16 @@ namespace RnSchool
                     Description = "A simple example to Implement Swagger UI",
                 });
             });
-             services.AddDbContext<rnschoolDBContext>(option => option.UseSqlServer(Configuration.GetConnectionString("my con")));
+            services.AddDbContext<rnschoolDBContext>(option => option.UseSqlServer(Configuration.GetConnectionString("my con")));
+            services.AddTransient<IStaffDbProvider, StaffDbProvider>();
+            services.AddTransient<IStaffService, StaffService>();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -54,7 +59,8 @@ namespace RnSchool
 
             app.UseHttpsRedirection();
             app.UseSwagger();
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
             });
 
