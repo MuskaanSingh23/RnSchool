@@ -45,6 +45,9 @@ namespace RnSchool
             services.AddDbContext<rnschoolDBContext>(option => option.UseSqlServer(Configuration.GetConnectionString("my con")));
             services.AddTransient<IStaffDbProvider, StaffDbProvider>();
             services.AddTransient<IStaffService, StaffService>();
+            services.AddTransient<IStudentsDbProvider, StudentsDbProvider>();
+            services.AddTransient<IStudentsService, StudentsService>();
+
         }
 
 

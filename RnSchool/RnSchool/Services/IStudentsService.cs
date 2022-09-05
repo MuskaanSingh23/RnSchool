@@ -1,5 +1,4 @@
 ﻿using RnSchool.DataContacts.Response;
-using RnSchool.Db.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace RnSchool.Services
 {
-    public interface IStaffService
+   public interface IStudentsService
     {
-        object StaffRole { get; }
-
-        List<StaffRoleResponse> GetStaffRoleList();
-        
+        StudentsResponse PostStudents();
     }
 }

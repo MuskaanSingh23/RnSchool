@@ -22,9 +22,5 @@
     <ProjectReference Include="..\RnSchool.Db\RnSchool.Db.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DataContacts\Request\" />
-  </ItemGroup>
-
 
 </Project>

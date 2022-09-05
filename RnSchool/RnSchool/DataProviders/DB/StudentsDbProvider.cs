@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace RnSchool.DataProviders.DB
 {
-    public class StaffDbProvider:IStaffDbProvider
+    public class StudentsDbProvider:IStudentsDbProvider
     {
         private readonly rnschoolDBContext _dbContext;
-        public StaffDbProvider(rnschoolDBContext db)
+        public StudentsDbProvider(rnschoolDBContext db)
         {
             _dbContext = db;
         }
-        public List<StaffRole> GetStaffRoleList()
+        public Students PostStudents()
         {
-           var list= _dbContext.StaffRole.ToList();
-            return list;
+
+            throw new NotImplementedException();
         }
 
         
     }
-   
 }
