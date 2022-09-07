@@ -47,6 +47,8 @@ namespace RnSchool
             services.AddTransient<IStaffService, StaffService>();
             services.AddTransient<IStudentsDbProvider, StudentsDbProvider>();
             services.AddTransient<IStudentsService, StudentsService>();
+            services.AddTransient<IClassDbProvider, ClassDbProvider>();
+            services.AddTransient<IClassService, ClassService>();
 
         }
 

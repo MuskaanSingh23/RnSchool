@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace RnSchool.Services
 {
-    public interface IStudentsService
+    public interface IClassService
     {
-        StudentsResponse AddStudents(StudentAddRequest studentAddRequest);
+        ClassResponse AddClass(ClassAddRequest classAddRequest);
+
+        object Class { get; }
+        List<ClassResponse> GetClassList();
     }
 }

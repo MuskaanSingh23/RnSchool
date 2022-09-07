@@ -1,4 +1,5 @@
-﻿using RnSchool.Db.Models;
+﻿using RnSchool.DataContacts.Request;
+using RnSchool.Db.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,21 @@ namespace RnSchool.DataProviders.DB
         {
             _dbContext = db;
         }
-        public Students PostStudents()
-        {
+       
 
-            throw new NotImplementedException();
+        public Students AddStudents(Students students)
+        {
+            _dbContext.Students.Add(students);
+            _dbContext.SaveChanges();
+            return students;
         }
 
-        
+        public Students GetExistingStudentsByEmail(string email)
+        {
+            var emaildb = _dbContext.Students.Where(e => e.Email == email).FirstOrDefault();
+
+
+            return emaildb;
+        }
     }
 }

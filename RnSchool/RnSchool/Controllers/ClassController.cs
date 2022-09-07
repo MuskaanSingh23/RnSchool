@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RnSchool.DataContacts.Request;
 using RnSchool.DataContacts.Response;
-using RnSchool.Db.Models;
 using RnSchool.Services;
 using System;
 using System.Collections.Generic;
@@ -13,42 +12,44 @@ namespace RnSchool.Controllers
 {
     [Route("api")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class ClassController : ControllerBase
     {
-        private readonly IStudentsService _studentsService;
-        public StudentsController(IStudentsService studentsService)
+        private readonly IClassService _classService;
+        public ClassController(IClassService classService)
         {
-            _studentsService = studentsService;
+            _classService = classService;
         }
 
-
-        [Route("student")]
+        [Route("class")]
         [HttpPost]
-        public IActionResult AddStudents(StudentAddRequest studentAddRequest)
+        public IActionResult AddClass(ClassAddRequest classAddRequest)
         {
             Payload payload = new Payload();
-            
+
             try
             {
-                _studentsService.AddStudents(studentAddRequest);
-                payload.Message = "success";
+                _classService.AddClass(classAddRequest);
+                payload.Message = "Success";
                 payload.IsSuccess = true;
-                
+
             }
             catch (Exception ex)
             {
-
                 payload.Message = ex.Message;
                 payload.IsSuccess = false;
+               
             }
+           
             return Ok(payload);
-            
-
         }
+        [Route("classes")]
+        [HttpGet]
+        public IActionResult GetClassList()
+        {
 
-       
-        
+            var list = _classService.GetClassList();
 
-
+            return Ok(list);
+        }
     }
 }

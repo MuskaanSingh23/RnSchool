@@ -17,4 +17,5 @@ namespace RnSchool.DataContacts.Response
         public DateTime Dob { get; set; }
         
     }
+    
 }
