@@ -31,6 +31,23 @@ namespace RnSchool.DataProviders.DB
             return classdb;
         }
 
+
+        public Class GetExistingClassById(int classId)
+        {
+            var classdb = _dBContext.Class.Where(e => e.ClassId == classId).FirstOrDefault();
+
+            return classdb;
+        }
+
+        public void UpdateClass(ClassUpdateRequest classUpdateRequest)
+        {
+            var classdb = _dBContext.Class.Where(e => e.ClassId == classUpdateRequest.ClassId).First();
+            classdb.MonitorStudentId = classUpdateRequest.MonitorStudentId;
+            classdb.ClassTeacherId = classUpdateRequest.ClassTeacherId;
+            _dBContext.SaveChanges();
+            
+
+        }
         public List<Class> GetClassList()
         {
             

@@ -14,5 +14,7 @@ namespace RnSchool.DataProviders.DB
         
         List<Class> GetClassList();
         Class GetExistingClassByName(string className);
+        Class GetExistingClassById(int classId);
+        void UpdateClass(ClassUpdateRequest classUpdateRequest);
     }
 }

@@ -26,7 +26,7 @@ namespace RnSchool.Services
             var ExistingClass = _classdbProvider.GetExistingClassByName(classAddRequest.ClassName);
 
             //if exist then show error
-            if (ExistingClass!=null)
+            if (ExistingClass != null)
             {
                 throw new Exception("this class already exist");
             }
@@ -35,15 +35,15 @@ namespace RnSchool.Services
             {
                 var dbResponse = _classdbProvider.AddClass(classes);
             }
-           
-            
+
+
 
 
 
 
             return null;
         }
-        
+
         //for get
         public object Class => throw new NotImplementedException();
 
@@ -61,6 +61,27 @@ namespace RnSchool.Services
 
         }
 
+
+        public void  UpdateClass(ClassUpdateRequest classUpdateRequest)
+        {
+            Class classes = new Class();
+            classes.ClassId = classUpdateRequest.ClassId;
+            //check weather the classes name already exist or not
+            var ExistingClass = _classdbProvider.GetExistingClassById(classUpdateRequest.ClassId);
+
+            //if exist then show error
+            if (ExistingClass != null)
+            {
+                _classdbProvider.UpdateClass(classUpdateRequest);
+
+            }
+            //if not then add data 
+            else
+            {
+                throw new Exception("this class does not exist");
+            }
+
+        }
     }
 }
 

@@ -13,5 +13,6 @@ namespace RnSchool.Services
 
         object Class { get; }
         List<ClassResponse> GetClassList();
+        void UpdateClass(ClassUpdateRequest classUpdateRequest);
     }
 }
