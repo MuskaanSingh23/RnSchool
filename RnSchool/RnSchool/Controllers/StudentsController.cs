@@ -46,8 +46,31 @@ namespace RnSchool.Controllers
 
         }
 
-       
-        
+        [Route("student")]
+        [HttpPut]
+        public IActionResult UpdateStudents(StudentsUpdateRequest studentsUpdateRequest)
+        {
+            Payload payload = new Payload();
+
+            try
+            {
+                _studentsService.UpdateStudents(studentsUpdateRequest);
+                payload.Message = "Success";
+                payload.IsSuccess = true;
+
+            }
+            catch (Exception ex)
+            {
+                payload.Message = ex.Message;
+                payload.IsSuccess = false;
+
+            }
+
+            return Ok(payload);
+        }
+
+
+
 
 
     }

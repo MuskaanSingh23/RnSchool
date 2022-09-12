@@ -30,5 +30,27 @@ namespace RnSchool.DataProviders.DB
 
             return emaildb;
         }
+
+        public Students GetExistingStudentsById(int studentsId)
+        {
+            var studentsdb = _dbContext.Students.Where(e => e.StudentId == studentsId).FirstOrDefault();
+
+            return studentsdb;
+        }
+
+        public void UpdateStudents(StudentsUpdateRequest studentsUpdateRequest)
+        {
+            var studentsdb = _dbContext.Students.Where(e => e.StudentId == studentsUpdateRequest.StudentsId).First();
+            studentsdb.Email = studentsUpdateRequest.Email;
+            studentsdb.FirstName = studentsUpdateRequest.FirstName;
+            studentsdb.LastName = studentsUpdateRequest.LastName;
+            studentsdb.Mobile = studentsUpdateRequest.Mobile;
+            studentsdb.Address = studentsUpdateRequest.Address;
+            studentsdb.Dob = studentsUpdateRequest.Dob;
+            studentsdb.ClassId = studentsUpdateRequest.ClassId;
+            _dbContext.SaveChanges();
+
+
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace RnSchool.DataProviders.DB
     {
         Students AddStudents(Students students);
         Students GetExistingStudentsByEmail(string email);
+        void UpdateStudents(StudentsUpdateRequest studentsUpdateRequest);
+        Students GetExistingStudentsById(int studentsId);
 
 
 

@@ -10,5 +10,6 @@ namespace RnSchool.Services
     public interface IStudentsService
     {
         StudentsResponse AddStudents(StudentAddRequest studentAddRequest);
+        void UpdateStudents(StudentsUpdateRequest studentsUpdateRequest);
     }
 }

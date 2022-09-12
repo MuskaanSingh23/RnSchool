@@ -42,6 +42,8 @@ namespace RnSchool.Controllers
            
             return Ok(payload);
         }
+
+
         [Route("classes")]
         [HttpGet]
         public IActionResult GetClassList()
@@ -51,6 +53,7 @@ namespace RnSchool.Controllers
 
             return Ok(list);
         }
+
 
         [Route("class")]
         [HttpPut]

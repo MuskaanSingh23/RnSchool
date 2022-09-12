@@ -56,8 +56,30 @@ namespace RnSchool.Services
 
             
         }
-      
 
-        
+        public void UpdateStudents(StudentsUpdateRequest studentsUpdateRequest)
+        {
+            Students students = new Students();
+            students.StudentId = studentsUpdateRequest.StudentsId;
+           
+            var ExistingStudents = _studentsdbProvider.GetExistingStudentsById(studentsUpdateRequest.StudentsId);
+
+            //if exist then show error
+            if (ExistingStudents != null)
+            {
+                _studentsdbProvider.UpdateStudents(studentsUpdateRequest);
+
+            }
+            //if not then add data 
+            else
+            {
+                throw new Exception("this student does not exist");
+            }
+
+        }
+       
+
+
+
     }
 }

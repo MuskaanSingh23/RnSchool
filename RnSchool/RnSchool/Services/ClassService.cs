@@ -18,6 +18,7 @@ namespace RnSchool.Services
             _classdbProvider = classdbProvider;
         }
         //for post
+        
         public ClassResponse AddClass(ClassAddRequest classAddRequest)
         {
             Class classes = new Class();
@@ -35,12 +36,6 @@ namespace RnSchool.Services
             {
                 var dbResponse = _classdbProvider.AddClass(classes);
             }
-
-
-
-
-
-
             return null;
         }
 
@@ -61,6 +56,7 @@ namespace RnSchool.Services
 
         }
 
+        //for put
 
         public void  UpdateClass(ClassUpdateRequest classUpdateRequest)
         {

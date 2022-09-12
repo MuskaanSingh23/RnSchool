@@ -19,7 +19,29 @@ namespace RnSchool.DataProviders.DB
             return list;
         }
 
-        
+        //get staff
+        public List<Staff> GetStaffList()
+        {
+            var list = _dbContext.Staff.ToList();
+            return list;
+        }
+
+        public Staff AddStaff(Staff staff)
+        {
+            _dbContext.Staff.Add(staff);
+            _dbContext.SaveChanges();
+            return staff;
+        }
+
+        public Staff GetExistingStaffByEmail(string email)
+        {
+            var emaildb = _dbContext.Staff.Where(e => e.Email == email).FirstOrDefault();
+
+
+            return emaildb;
+        }
+
+
     }
    
 }

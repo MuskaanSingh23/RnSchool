@@ -1,4 +1,5 @@
-﻿using RnSchool.DataContacts.Response;
+﻿using RnSchool.DataContacts.Request;
+using RnSchool.DataContacts.Response;
 using RnSchool.Db.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,9 @@ namespace RnSchool.Services
         object StaffRole { get; }
 
         List<StaffRoleResponse> GetStaffRoleList();
-        
+        StaffResponse AddStaff(StaffAddRequest staffAddRequest);
+        List<StaffResponse> GetStaffList();
+
+
     }
 }
