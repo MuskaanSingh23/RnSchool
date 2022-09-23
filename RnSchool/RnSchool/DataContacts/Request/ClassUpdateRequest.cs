@@ -8,6 +8,7 @@ namespace RnSchool.DataContacts.Request
     public class ClassUpdateRequest
     {
         public int ClassId { get; set; }
+        public string ClassName { get; set; }
         public int? MonitorStudentId { get; set; }
         public int? ClassTeacherId { get; set; }
 

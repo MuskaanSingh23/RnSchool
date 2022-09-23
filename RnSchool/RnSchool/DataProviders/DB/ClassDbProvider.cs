@@ -42,6 +42,7 @@ namespace RnSchool.DataProviders.DB
         public void UpdateClass(ClassUpdateRequest classUpdateRequest)
         {
             var classdb = _dBContext.Class.Where(e => e.ClassId == classUpdateRequest.ClassId).First();
+            classdb.ClassName = classUpdateRequest.ClassName;
             classdb.MonitorStudentId = classUpdateRequest.MonitorStudentId;
             classdb.ClassTeacherId = classUpdateRequest.ClassTeacherId;
             _dBContext.SaveChanges();
